@@ -41,7 +41,6 @@ import (
 
 	"github.com/surgebase/glog"
 	"golang.org/x/net/icmp"
-	"golang.org/x/net/internal/iana"
 	"golang.org/x/net/ipv4"
 	"golang.org/x/net/ipv6"
 )
