@@ -629,7 +629,7 @@ func (this *Pinger) marshalMessage(m *icmp.Message, p []byte) ([]byte, error) {
 	// 1 byte Type
 	// 1 byte Code
 	// 2 bytes checksum
-	total := 4 + m.Body.Len()
+	total := 4 + m.Body.Len(ProtocolICMP)
 	if cap(p) < total {
 		p = make([]byte, total)
 	}
@@ -651,7 +651,7 @@ func (this *Pinger) marshalMessage(m *icmp.Message, p []byte) ([]byte, error) {
 	p[0], p[1], p[2], p[3] = byte(mtype), byte(m.Code), 0, 0
 
 	// Copy the echo message
-	if m.Body != nil && m.Body.Len() != 0 {
+	if m.Body != nil && m.Body.Len(ProtocolICMP) != 0 {
 		er, ok := m.Body.(*icmp.Echo)
 		if !ok {
 			return nil, fmt.Errorf("ping/marshalMessage: Error type requireing m.Body to *icmp.Echo")
