@@ -432,7 +432,7 @@ loop:
 			break loop
 		}
 
-		m, err := icmp.ParseMessage(iana.ProtocolICMP, b)
+		m, err := icmp.ParseMessage(ProtocolICMP, b)
 		if err != nil {
 			// Hm...bad message?
 			continue
@@ -619,7 +619,7 @@ func (this *Pinger) sendMessage(m *icmp.Message, wh *ipv4.Header) error {
 // buffer will be allocated. The updated buffer, p or the new one, will be returned
 // and the length will be set to the length of the echo message.
 func (this *Pinger) marshalMessage(m *icmp.Message, p []byte) ([]byte, error) {
-	if m.Type.Protocol() == iana.ProtocolIPv6ICMP {
+	if m.Type.Protocol() == ProtocolIPv6ICMP {
 		return nil, fmt.Errorf("ping/marshalMessage: IPv6 not yet supported")
 	}
 
