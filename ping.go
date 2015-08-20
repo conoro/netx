@@ -51,6 +51,8 @@ const (
 	defaultMaxRTT   = 100 * time.Millisecond
 	defaultTTL      = 32
 	defaultSize     = 8
+	ProtocolICMP     = 1
+	ProtocolIPv6ICMP = 58
 )
 
 // Ping sends ICMP ECHO_REQUEST to a single IP address, wait for the ECHO_REPLY,
